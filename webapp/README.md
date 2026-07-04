@@ -37,8 +37,11 @@ adding a voice, they constrain which scales the room can be in at all. See
 1. **Describe the instrumentarium.** Two tabs:
    - *Harmonicas*: a 12-key stepper grid (Richter tuning assumed; each harp
      contributes a BLOW chord and a DRAW chord).
-   - *Found instruments*: quick-add by name and pitch, with an optional
-     second pitch for dyads (chimes, two-tone blocks).
+   - *Found instruments*: quick-add by name and pitch (optional second
+     pitch for dyads), a role selector (voice / anchor / chameleon), and a
+     template dropdown with pre-filled entries: tuned sets (desk bells,
+     kalimba, handpan), chameleons (wine glass, Ensemble Jammer), and
+     environment (mains hum, train horns, Westminster Quarters).
 2. **Read the network.** Each node is one of Tymoczko's 57 maximally even
    scales. A node appears only if the pooled inventory can put **≥ N
    instruments on it simultaneously** (default N = 2); bigger, more central,
@@ -57,17 +60,28 @@ adding a voice, they constrain which scales the room can be in at all. See
 
 ## Voice counting
 
-Identical instruments are grouped (identity = match rule + state pitch
-classes, label ignored); a group of *n* copies with *k* states fitting the
-scale contributes min(*k*, *n*) voices. Three C harmonicas on a scale that
-fits both BLOW and DRAW give 2 voices, one A harmonica on the same scale
-gives 1, and one bell whose pitch fits gives 1. The old harmonica-specific
-rule falls out of this as a special case.
+Identical instruments are grouped (identity = role + match rule +
+minCoverage + state pitch classes, label ignored); a group of *n* copies
+with *k* states fitting the scale contributes min(*k*, *n*) voices. Three
+C harmonicas on a scale that fits both BLOW and DRAW give 2 voices, one A
+harmonica on the same scale gives 1, and one bell whose pitch fits gives 1.
+The old harmonica-specific rule falls out of this as a special case.
+
+Match rules: `all` (every pitch class of the state must be in the scale),
+`fundamental` (only the first pc must fit; the rest are tolerated
+overtones), `coverage` (at least `minCoverage` of the pcs fit — kalimbas
+and handpans, whose playable subset is the intersection). Roles modify the
+counting: anchors add no voice and instead hide every scale they don't
+fit; chameleons skip identity grouping and contribute one voice per copy
+on every scale.
 
 ## Code map
 
-- `src/instruments.js`: instrument schema, templates (`makeHarmonica`,
-  `makePitched`, `makeDyad`), identity grouping, `countVoices`, `detailList`.
+- `src/instruments.js`: instrument schema, constructors (`makeHarmonica`,
+  `makePitched`, `makeDyad`, `makeTunedSet`, `makeChameleon`), match rules,
+  identity grouping, `countVoices`, `anchorsFit`, `detailList`.
+- `src/templates.js`: the pre-filled template registry (tuned sets,
+  chameleons, anchors & environment) behind the quick-add dropdown.
 - `src/scales.js`: the 57-scale data, adjacency edges, radial layout,
   `buildNetwork(instruments, minVoices)`.
 - `src/NetworkPage.jsx`: inventory panel (tabs, slider), SVG network,
@@ -90,5 +104,7 @@ npm run dev     # http://localhost:5173
 npm run build
 ```
 
-Sign in with a Scale Navigator (Google) account; the host view is the
+Requires a `.env.local` with the `VITE_FIREBASE_*` web credentials (see
+the repo root README for the variable list). Sign in with a Scale
+Navigator (Google) account; the host view is the
 network, and broadcasts write scale key + BPM to the Firestore room document.
