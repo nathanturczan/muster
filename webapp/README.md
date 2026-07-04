@@ -1,14 +1,14 @@
 # Muster
 
-*Found harmony from the instrumentarium on hand.*
+*Found harmony from the instruments on hand.*
 
 Muster is the conductor interface for a live networked ensemble. You tell it
 what instruments are lying around: harmonicas, desk bells, wood blocks,
 two-note chimes, whatever the room contains. It builds a network of the
 scales that inventory can actually play together, sized and centered by how
 many instruments can sound at once. Clicking a scale broadcasts it (plus BPM)
-to a Firebase room, where each performer's interface renders what that scale
-means for their particular instrument.
+to the ensemble room, where each performer's interface renders what that
+scale means for their particular instrument.
 
 The loop that makes it interesting: the instruments you happen to have
 motivate a scale network, and the scale network then tells you how to marshal
@@ -16,15 +16,6 @@ those same instruments in realtime. Constraint becomes the score. Where Orff
 pedagogy removes bars from a xylophone so students can't play a wrong note,
 Muster runs the same idea in reverse: it chooses scales to fit the bars,
 bells, and reeds you already have.
-
-## The three words
-
-- **Muster**: this interface, the act of assembling what's on hand and
-  directing it live.
-- **Instrumentarium**: the inventory you feed it, entered in the panel or
-  (eventually) aggregated from performers' own descriptions.
-- **Found harmony**: what comes out, harmony discovered inside the
-  constraints of found instruments rather than imposed on them.
 
 "Instrument" is anything with dependable pitch: the refrigerator's B♭ hum,
 a door squeak, the washing machine's end-of-cycle jingle all qualify. Sounds
@@ -34,7 +25,7 @@ adding a voice, they constrain which scales the room can be in at all. See
 
 ## How it works
 
-1. **Describe the instrumentarium.** Two tabs:
+1. **Describe the inventory.** Two tabs:
    - *Harmonicas*: a 12-key stepper grid (Richter tuning assumed; each harp
      contributes a BLOW chord and a DRAW chord).
    - *Found instruments*: quick-add by name and pitch (optional second
@@ -104,7 +95,17 @@ npm run dev     # http://localhost:5173
 npm run build
 ```
 
-Requires a `.env.local` with the `VITE_FIREBASE_*` web credentials (see
-the repo root README for the variable list). Sign in with a Scale
-Navigator (Google) account; the host view is the
-network, and broadcasts write scale key + BPM to the Firestore room document.
+Requires a `.env.local` (never committed) with the Firebase web app
+credentials:
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+Sign in with a Google account; the host view is the network, and
+broadcasts write scale key + BPM to the room document.

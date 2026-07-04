@@ -6,7 +6,7 @@ import { countVoices, detailList, anchorsFit } from "./instruments";
 
 // All 57 scales with their pitch classes and adjacencies (from ScaleData.js)
 const SCALES = {
-  "A Acoustic": { pcs: [1, 3, 4, 6, 7, 9, 11], adj: ["E Diatonic", "E Harmonic Minor", "Octatonic 2", "D Diatonic", "B Harmonic Major", "Whole Tone 2"] },
+  "A Acoustic": { pcs: [1, 3, 4, 6, 7, 9, 11], adj: ["E Diatonic", "E Harmonic Minor", "Octatonic 1", "D Diatonic", "B Harmonic Major", "Whole Tone 2"] },
   "A Diatonic": { pcs: [1, 2, 4, 6, 8, 9, 11], adj: ["E Diatonic", "F# Harmonic Minor", "D Acoustic", "D Diatonic", "A Harmonic Major", "E Acoustic"] },
   "A Harmonic Major": { pcs: [1, 2, 4, 5, 8, 9, 11], adj: ["A Diatonic", "F# Harmonic Minor", "G Acoustic", "Octatonic 2", "A Harmonic Minor", "Hexatonic 1"] },
   "A Harmonic Minor": { pcs: [0, 2, 4, 5, 8, 9, 11], adj: ["C Diatonic", "A Harmonic Major", "D Acoustic", "Octatonic 3", "C Harmonic Major", "Hexatonic 1"] },

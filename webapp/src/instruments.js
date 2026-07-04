@@ -113,8 +113,14 @@ function stateFits(state, instrument, pcSet) {
 }
 
 // Identity ignores the label: two bells tuned to the same pitch are the
-// same voice, whatever they're written on.
+// same voice, whatever they're written on. Chameleons are the exception —
+// they have no pitch identity (each copy can take a different pitch), so
+// they group by label instead: two wine glasses collapse, but a wine glass
+// and an Ensemble Jammer stay distinct in the detail list.
 function identityKey(instrument) {
+  if ((instrument.role || "voice") === "chameleon") {
+    return `chameleon:${instrument.label}`;
+  }
   const states = instrument.states
     .map((s) => [...s.pcs].sort((a, b) => a - b).join("."))
     .sort()

@@ -21,7 +21,7 @@ NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
 SCALES = {
     "A Acoustic": {
         "pcs": [1, 3, 4, 6, 7, 9, 11],
-        "adj": ["E Diatonic", "E Harmonic Minor", "Octatonic 2", "D Diatonic", "B Harmonic Major", "Whole Tone 2"]
+        "adj": ["E Diatonic", "E Harmonic Minor", "Octatonic 1", "D Diatonic", "B Harmonic Major", "Whole Tone 2"]
     },
     "A Diatonic": {
         "pcs": [1, 2, 4, 6, 8, 9, 11],

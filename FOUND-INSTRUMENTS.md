@@ -130,10 +130,12 @@ Every instrument has a `role` (default `"voice"`):
   every shown scale must fit every anchor.
 - **chameleon** — tunable by construction (wine glass by fill level, slide
   whistle, musical saw, and **Ensemble Jammer**, the software chameleon).
-  Fits every scale, and each copy is its own voice — identity grouping is
-  deliberately skipped because two wine glasses can take two different
-  pitches. The tune-to-the-room gesture lives here: a chameleon conforms to
-  whatever the anchors demand.
+  Fits every scale, and each copy is its own voice — pitch-based identity
+  grouping doesn't apply (two wine glasses can take two different pitches),
+  so chameleons group by label instead: copies of the same chameleon
+  collapse into one detail line with a preserved count, while differently
+  named chameleons stay distinct. The tune-to-the-room gesture lives here:
+  a chameleon conforms to whatever the anchors demand.
 
 Roles and match rules are orthogonal: role says *when/whether it sounds and
 what that means for the network*; matchRule says *how its pitches compare to
