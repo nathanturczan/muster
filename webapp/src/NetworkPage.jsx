@@ -277,20 +277,32 @@ export default function NetworkPage({ currentUser }) {
         boxSizing: "border-box",
       }}
     >
-      <div style={{ maxWidth: 560, width: "100%", margin: "0 auto 8px", flexShrink: 0 }}>
+      <div style={{ maxWidth: 1100, width: "100%", margin: "0 auto 8px", flexShrink: 0 }}>
         <h1 style={{ fontSize: 18, margin: "0 0 8px", textAlign: "center" }}>
           Muster
         </h1>
+
+        {/* Panels sit side by side when there's room, stack on narrow screens */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            alignItems: "stretch",
+          }}
+        >
 
         {/* Ensemble Controls — copied from noteschordsscales */}
         {currentUser && (
           <div
             style={{
+              flex: "1 1 320px",
+              minWidth: 0,
+              boxSizing: "border-box",
               background: "#fff",
               border: "1px solid #e0e0e0",
               borderRadius: "6px",
               padding: "10px 12px",
-              marginBottom: "8px",
             }}
           >
             <div style={{ fontWeight: 500, marginBottom: "12px", fontSize: "13px" }}>
@@ -420,6 +432,9 @@ export default function NetworkPage({ currentUser }) {
         {/* Inventory: what the ensemble has on hand */}
         <div
           style={{
+            flex: "1 1 320px",
+            minWidth: 0,
+            boxSizing: "border-box",
             background: "#fff",
             border: "1px solid #e0e0e0",
             borderRadius: "6px",
@@ -737,6 +752,7 @@ export default function NetworkPage({ currentUser }) {
               style={{ flex: 1 }}
             />
           </div>
+        </div>
         </div>
       </div>
 
