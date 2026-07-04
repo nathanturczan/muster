@@ -160,21 +160,25 @@ cue. Lineage worth citing: Cage's environmental sound, La Monte Young's
 Dream House tuned to the 60 Hz mains hum (≈ B♭ in North America, ≈ G on
 50 Hz grids), Oliveros's Deep Listening.
 
-## Environmental taxonomy (research incoming)
+## Environmental taxonomy
 
-The sounding environment sorts by role × pitch structure. Confident entries
-already in `webapp/src/templates.js`; the rest await citable frequencies
-from the research pass:
+Full research pass: `sounding_environment_taxonomy.md` (this repo). The
+sounding environment sorts by role × pitch structure. Confident entries
+are in `webapp/src/templates.js`; a few still await citable frequencies:
 
 - **Anchors**: mains hum (60 Hz grid ≈ B♭, 50 Hz ≈ G — the meta-anchor; a
   North American room is already faintly in B♭), HVAC/fan drones,
   fluorescent/transformer buzz, aquarium pumps.
 - **Events** (cueable or waitable → ordinary voices): appliance jingles
   (Samsung's washer plays Schubert's "Die Forelle"), kettle whistles,
-  smoke-alarm chirps; deliberately tuned vehicle sounds (train horn chords
-  like the Nathan K5LA, composed EV AVAS tones, car chimes); telephony
+  smoke-alarm chirps; tuned train horn chords (Nathan K5LA = B major 6th,
+  K5H = D♯ minor 6th, P5 = A dominant 7th), car chimes; telephony
   (dial tone = 350+440 Hz = an F+A dyad, DTMF pairs); transit door chimes;
-  broadcast mnemonics (NBC chimes = G–E–C).
+  broadcast mnemonics (NBC chimes = G–E–C, Westminster Quarters = G–F–E–B).
+  Note: EV AVAS tones are excluded — the taxonomy found they pitch-bend
+  continuously with vehicle speed, so they're texture, not pitch material.
+  Birdsong (chickadee fee-bee, cuckoo) is likewise a reliable *interval* on
+  a variable root — not representable as a fixed pc set.
 - **Playable**: wine glasses/glass harp (chameleon), wind chimes (often
   pentatonic fixed sets), carillons/Westminster Quarters, bottles, pipes,
   saws, tuning forks.
@@ -202,8 +206,12 @@ Research-pending slots (structure exists, data/decisions await):
 - Coverage default (`minCoverage` placeholder: majority of the set)
 - Voices vs. players for distributed sets (are 8 desk bells 1 voice or 8?)
 - Adaptive threshold heuristic (auto-suggest N from pool composition)
-- Environmental entries needing citable frequencies (train chords, AVAS,
-  transit chimes, appliance jingle keys, birdsong intervals)
+- Environmental entries needing citable frequencies (transit chimes,
+  appliance jingle keys). Train chords landed (K5LA/K5H/P5 in
+  `templates.js`); AVAS and birdsong ruled out as non-harmonizable.
+- `active` flag for duty-cycled quasi-anchors (fridge compressor: an
+  anchor while running, silent between cycles — the taxonomy recommends
+  distinguishing these from true always-on electrical hum)
 
 Out of scope here: performer renderers and instrument priority order
 (lalork-website), phase-4 aggregation, weighted matching.

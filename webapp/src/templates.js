@@ -101,8 +101,41 @@ export const TEMPLATES = [
     group: "Anchors & environment",
     make: () => makeTunedSet("NBC chimes", [0, 4, 7], 3),
   },
+  {
+    id: "train-horn-k5la",
+    label: "Train horn, Nathan K5LA (B major 6th)",
+    group: "Anchors & environment",
+    // D#4 F#4 G#4 B4 D#5 = 311/370/415/494/622 Hz; sounds as one chord
+    make: () => makeTunedSet("train horn (K5LA)", [3, 6, 8, 11], 4),
+  },
+  {
+    id: "train-horn-k5h",
+    label: "Train horn, Nathan K5H (D# minor 6th)",
+    group: "Anchors & environment",
+    // D# F# A C D#
+    make: () => makeTunedSet("train horn (K5H)", [0, 3, 6, 9], 4),
+  },
+  {
+    id: "train-horn-p5",
+    label: "Train horn, Nathan P5 (A dominant 7th)",
+    group: "Anchors & environment",
+    // C# E G A C#
+    make: () => makeTunedSet("train horn (P5)", [1, 4, 7, 9], 4),
+  },
+  {
+    id: "westminster-quarters",
+    label: "Westminster Quarters (G–F–E–B)",
+    group: "Anchors & environment",
+    // Big Ben / mantel clocks; commonly G3-F3-E3-B3 (melody, fixed set)
+    make: () => makeTunedSet("Westminster chimes", [4, 5, 7, 11], 4),
+  },
   // RESEARCH-PENDING slots (add when citable frequencies land):
-  // train horn chords (Nathan K5LA), EV AVAS tones, transit door chimes,
-  // appliance jingles (Samsung "Die Forelle" key), smoke-alarm chirp,
-  // birdsong intervals (chickadee fee-bee, cuckoo minor third).
+  // transit door chimes, appliance jingles (Samsung "Die Forelle" is fixed
+  // per model but the key varies — needs per-model data), smoke-alarm chirp.
+  //
+  // Deliberately EXCLUDED per the taxonomy (not harmonizable):
+  // - EV AVAS tones: pitch-bend continuously with vehicle speed
+  // - birdsong intervals (chickadee fee-bee, cuckoo): reliable interval,
+  //   variable root — would need an "interval" matchRule that doesn't map
+  //   to a fixed pc set. Texture, not pitch material.
 ];
